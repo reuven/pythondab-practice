@@ -11,3 +11,6 @@ my_hash =  hashlib.md5(my_bytestring).hexdigest()
 print(my_hash)
 #print(f"The INPUT was: {my_string}")
 #print(f"The MD5 hash is ==>  {my_hash}")
+
+
+# Matt's comment: nothing to say, perfect!

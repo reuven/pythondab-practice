@@ -30,3 +30,5 @@ for one_char in my_string:
     
 for k, v in totals.items():
     print(f"{k} : {v}")
+
+# Matt's comment : the squash line to remove spaces is a great idea!
