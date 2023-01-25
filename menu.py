@@ -1,11 +1,9 @@
-'''
+"""
 Mike's menu.py for the modules lessons
 
-This function should take any number of string arguments,
-    which are then presented to the user.
-
-'''
+"""
 import sys
+
 
 def menu(*args):
     while True:
@@ -18,6 +16,7 @@ def menu(*args):
             return my_input
         else:
             print(f'Your choice is not in the list: {my_input}')
+
 
 if __name__ == '__main__':
     choice = menu(*sys.argv[1:])
