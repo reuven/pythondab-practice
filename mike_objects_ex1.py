@@ -9,15 +9,67 @@ class Scoop:
 
 
 class Person:
-    def __init__(self, name, email, phone):
+    def __init__(self, name, email=None, phone=None):
         self.name = name
         self.email = email
         self.phone = phone
+        self.accounts = [ ]
+
+    def add_account(self, new_account):
+        self.accounts.append(new_account)
+
+    def all_balances(self):
+        return [sum(one_account.transactions) for one_account in self.accounts]
+
+    def current_total(self):
+        return sum([sum(one_account.transactions) for one_account in self.accounts])
 
 
 class BankAccount:
     def __init__(self):
         self.transactions = []
+
+
+class Bowl(object):
+    def __init__(self):
+        self.scoops = [ ]
+
+    def add_scoops(self, *more_scoops):
+        self.scoops += more_scoops
+
+    def flavors(self):
+        return ', '.join([one_scoop.flavor for one_scoop in self.scoops])
+
+
+class ShoppingCart(object):
+    def __init__(self):
+        self.contents = { }
+
+    def add(self, name, price, add_qty):
+        if name in self.contents:
+            price, qty = self.contents[name]
+            self.contents[name] = (price, qty + add_qty)
+        else:
+            self.contents[name] = (price, add_qty)
+    
+    def total(self):
+        carttotal = 0
+        for item, info in self.contents.items():
+            price, qty = info
+            #print(item, price, qty)
+            carttotal += price * qty
+        return f'${carttotal:.2f}'
+
+    def remove(self, name):
+        if name in self.contents:
+            price, qty = self.contents[name]
+            if qty == 1:
+                del(self.contents[name])
+            else:
+                self.contents[name] = (price, qty - 1)
+
+
+#--------------------------------------------------
 
 linebreak = "----+" * 10
 # Run examples of each class:
